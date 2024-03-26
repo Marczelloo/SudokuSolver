@@ -1,9 +1,9 @@
 public class Main {
     int[][] board = new int[9][9];
 
-    int randomGenerator(int num)
+    int randomGenerator()
     {
-        return (int) Math.floor((num * Math.random()) + 1);
+        return (int) Math.floor((9 * Math.random()) + 1);
     }
 
     void fillDiagonal()
@@ -23,7 +23,7 @@ public class Main {
             {
                 do
                 {
-                    num = randomGenerator(9);
+                    num = randomGenerator();
                 }
                 while(!unUsedInBox(row, col, num));
 
@@ -60,7 +60,7 @@ public class Main {
         }
         else if(row < 6)
         {
-            if(col == (int)(row / 3) * 3)
+            if(col == (row / 3) * 3)
                 col = col + 3;
         }
         else
@@ -88,7 +88,7 @@ public class Main {
         }
 
         return false;
-    };
+    }
 
     boolean CheckIfSafe(int row, int col, int num)
     {
@@ -149,8 +149,8 @@ public class Main {
         int i = 0;
         while (i < 30)
         {
-            int row = randomGenerator(9) - 1;
-            int col = randomGenerator(9) - 1;
+            int row = randomGenerator() - 1;
+            int col = randomGenerator() - 1;
             if (board[row][col] != 0)
             {
                 int originalValue = board[row][col];
@@ -227,7 +227,7 @@ public class Main {
         sudoku.printSudoku();
         System.out.println();
 
-        System.out.println("Sudoku Board generated for player:");
+        System.out.println("Unsolved sudoku Board generated:");
         sudoku.generateBoardForPlayer();
         sudoku.printSudoku();
         System.out.println();
